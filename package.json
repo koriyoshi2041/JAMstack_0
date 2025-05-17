@@ -4,8 +4,8 @@
   "description": "",
   "main": "quotes.js",
   "scripts": {
-    "build": "eleventy",
-    "start": "eleventy --serve"
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve"
   },
   "keywords": [],
   "author": "",

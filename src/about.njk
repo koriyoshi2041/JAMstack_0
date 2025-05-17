@@ -1,0 +1,52 @@
+---
+layout: base.njk
+title: 关于 | Parafee的页面
+---
+
+<div class="philosophy-container">
+  <div class="philosophy-quote">
+    <p>"A rhizome has no beginning or end; it is always in the middle, between things, interbeing, intermezzo. The tree is filiation, but the rhizome is alliance, uniquely alliance. The tree imposes the verb 'to be,' but the fabric of the rhizome is the conjunction, 'and … and … and …' This conjunction carries enough force to shake and uproot the verb 'to be.' Where are you going? Where are you coming from? What are you heading for? These are totally useless questions."</p>
+    <p class="quote-author">— Deleuze & Guattari, A Thousand Plateaus</p>
+  </div>
+</div>
+
+<style>
+  .philosophy-container {
+    background-color: rgba(20, 20, 20, 0.9);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .philosophy-quote {
+    max-width: 800px;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: "Baskerville", "Garamond", "Times New Roman", serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    text-align: center;
+    animation: float 10s ease-in-out infinite;
+  }
+  
+  .quote-author {
+    margin-top: 2rem;
+    font-style: italic;
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @media (max-width: 768px) {
+    .philosophy-quote {
+      font-size: 1.2rem;
+    }
+  }
+</style> 

@@ -21,6 +21,21 @@ layout: base.njk
       <span class="neon-text">GitHub</span>
     </a>
   </div>
+  
+  <div class="hackernews-section">
+    <h2 class="hackernews-title">HackerNews Top Stories</h2>
+    <div class="hackernews-container">
+      {% for story in hackernews %}
+        <a href="{{ story.url }}" class="hn-story-button" target="_blank">
+          <div class="hn-story-title">{{ story.title }}</div>
+          <div class="hn-story-meta">
+            <span class="hn-score">{{ story.score }} points</span>
+            <span class="hn-by">by {{ story.by }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 
 <style>
@@ -149,5 +164,133 @@ layout: base.njk
   
   .neon-button .neon-text {
     /* 移除闪烁动画 */
+  }
+  
+  /* HackerNews 部分样式 */
+  .hackernews-section {
+    margin-top: 5rem;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hackernews-title {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hackernews-title::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    bottom: -10px;
+    left: -10%;
+  }
+  
+  .hackernews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  .hn-story-button {
+    display: block;
+    padding: 1.5rem;
+    background: linear-gradient(45deg, rgba(20, 20, 30, 0.9), rgba(40, 40, 80, 0.8));
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: all 0.5s;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(100, 100, 255, 0.2);
+    animation: pulse 3s infinite alternate;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .hn-story-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(100, 100, 255, 0.1),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .hn-story-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 50%, rgba(100, 100, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  
+  .hn-story-button:hover::before {
+    left: 100%;
+  }
+  
+  .hn-story-button:hover::after {
+    opacity: 1;
+  }
+  
+  .hn-story-button:hover {
+    transform: translateY(-3px) rotateX(5deg);
+    box-shadow: 0 5px 20px rgba(100, 100, 255, 0.4),
+                0 0 30px rgba(100, 100, 255, 0.2);
+    border-color: rgba(150, 150, 255, 0.5);
+  }
+  
+  .hn-story-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  .hn-story-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: rgba(200, 200, 255, 0.7);
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 15px rgba(100, 100, 255, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(100, 100, 255, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 15px rgba(100, 100, 255, 0.2);
+    }
   }
 </style> 

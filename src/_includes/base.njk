@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #0f0f12;
+      color: #f0f0f5;
+      font-family: 'Helvetica Neue', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .emoji {
+      font-size: 6em;
+      margin: 2rem 0;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    
+    /* Abstract Line Elements */
+    .abstract-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .line {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+      height: 1px;
+      width: 100%;
+      transform-origin: left center;
+    }
+    
+    .line:nth-child(1) {
+      top: 20%;
+      transform: rotate(5deg);
+      animation: moveLine 15s infinite linear;
+    }
+    
+    .line:nth-child(2) {
+      top: 40%;
+      transform: rotate(-3deg);
+      animation: moveLine 20s infinite linear;
+    }
+    
+    .line:nth-child(3) {
+      top: 65%;
+      transform: rotate(2deg);
+      animation: moveLine 17s infinite linear reverse;
+    }
+    
+    .line:nth-child(4) {
+      top: 85%;
+      transform: rotate(-4deg);
+      animation: moveLine 22s infinite linear reverse;
+    }
+    
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .circle:nth-child(5) {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 10%;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    .circle:nth-child(6) {
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      right: -200px;
+      border-width: 2px;
+    }
+    
+    .quote-container {
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .quote-en, .quote-fr {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      line-height: 1.6;
+      margin: 1.5rem 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
+      position: relative;
+    }
+    
+    .quote-en {
+      font-weight: 300;
+      text-align: left;
+      color: #c0c0d0;
+      letter-spacing: 0.03em;
+    }
+    
+    .quote-fr {
+      font-weight: 400;
+      text-align: right;
+      color: #d0c0c0;
+      font-size: 0.95em;
+      letter-spacing: 0.02em;
+    }
+    
+    .author {
+      display: block;
+      font-size: 0.8em;
+      font-style: normal;
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes moveLine {
+      0% { transform: translateX(-50%) rotate(var(--rotation)); }
+      100% { transform: translateX(150%) rotate(var(--rotation)); }
+    }
+    
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(20px, 20px); }
+      50% { transform: translate(0, 40px); }
+      75% { transform: translate(-20px, 20px); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="abstract-lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+  
+  {{ content | safe }}
+  
+  <script src="/js/quotes.js"></script>
+</body>
+</html> 

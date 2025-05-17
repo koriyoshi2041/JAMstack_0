@@ -1,0 +1,16 @@
+{
+  "name": "jamstack0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "quotes.js",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+} 
